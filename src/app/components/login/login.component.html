@@ -1,0 +1,43 @@
+<!-- <p>login works!</p> -->
+<!-- <h1>login Page</h1> -->
+
+<div class="center">
+    <div class="login-container">
+      <form [formGroup]="loginForm" (ngSubmit)="loginData()"  class="form-container">
+        <div  class="example-container">
+          <h1 class="">Login Page </h1>
+          <mat-form-field class="formInput">
+            <mat-label> Enter your UserID</mat-label>
+            <input matInput placeholder="nike@gmail.com"  formControlName="UserId">
+            <span *ngIf="loginForm.controls.UserId.hasError('required')">
+              <!-- email is required. -->
+            </span>
+          </mat-form-field>
+            <br>
+          <mat-form-field class="formInput">
+            <mat-label> Enter your Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+            <span *ngIf="loginForm.controls.Password.hasError('required')">
+              <!-- password is required. -->
+            </span>
+          </mat-form-field>
+          
+          <br>
+          <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
+          <a href="/delete">Forgot Password?</a>
+          <br>
+          
+        </div>
+        <br>
+    
+        <p>Don't have an account? <a href="/register">Registration</a></p>
+      </form>
+  
+    </div>
+   
+  
+  </div>
+  

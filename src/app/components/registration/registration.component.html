@@ -1,0 +1,189 @@
+    <!-- <p>registration works!</p> -->
+    <div class="center">
+        <div class="login-container">
+            <form [formGroup]="registerForm" (ngSubmit)="RegisterData()" class="form-container">
+                <div  class="example-container" >
+                    <h1>Registration</h1>
+                    <div class="row">
+                        <mat-form-field>
+                            <!-- <label>Enter UserID</label> -->
+                            <mat-label>Enter UserID</mat-label>
+                            <input matInput placeholder="nike@gmail.com"  formControlName="UserId">
+                            <span *ngIf="registerForm.controls.UserId.hasError('required')">
+                            <!-- Enter your Email. -->
+                            </span>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <!-- <label>Enter Password</label> -->
+                            <mat-label> Enter your Password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <span *ngIf="registerForm.controls.Password.hasError('required')">
+                                    <!-- Enter Password . -->
+                                </span>
+                        </mat-form-field>
+
+                    </div>
+                       
+                    
+                   
+                
+                        <!-- <br> -->
+                
+                    <mat-form-field>
+                        <!-- <label>SponserUserId</label> -->
+                        <mat-label>SponserUserId</mat-label>
+                        <input matInput formControlName="SponsorUserId"/>
+                        <span *ngIf="registerForm.controls.SponsorUserId.hasError('required')">
+                            <!-- Enter your FirstName. -->
+                        </span>
+                    </mat-form-field>
+
+                        <br>
+
+                    <mat-form-field>
+                        <!-- <label>Your FirstName</label> -->
+                        <mat-label> Enter your FirstName</mat-label>
+                        <input matInput placeholder="nike"  formControlName="FirstName">
+                        <span *ngIf="registerForm.controls.FirstName.hasError('required')">
+                            <!-- Enter your FirstName. -->
+                        </span>
+                    </mat-form-field>
+        
+                    <mat-form-field>
+                        <!-- <label>Your LastName</label> -->
+                        <mat-label> Enter your LastName</mat-label>
+                        <input matInput placeholder="Roy"  formControlName="LastName">
+                        <span *ngIf="registerForm.controls.LastName.hasError('required')">
+                            <!-- Enter your LastName. -->
+                        </span>
+                    </mat-form-field>
+        
+                    <br>
+            
+                    <mat-form-field>
+                        <!-- <label>Maritualstatus</label> -->
+                        <mat-label>Select your MaritalStatus</mat-label>
+                        <mat-select formControlName="MaritalStatus">
+                            <mat-option value="">Please select one…</mat-option>
+                            <mat-option value="M" checked >Married</mat-option>
+                            <mat-option value="S">Single</mat-option>
+                            <mat-option value="W">Widow</mat-option>
+                        </mat-select>
+                        <span *ngIf="registerForm.controls.MaritalStatus.hasError('required')">
+                            <!-- Select Maritualstatus. -->
+                        </span>
+                    </mat-form-field>
+
+                    
+                    <mat-form-field>
+                        <!-- <label>Gender</label> -->
+                        <mat-label>Select your Gender</mat-label>
+                        <mat-select formControlName="Gender">
+                            <mat-option value="">Please select one…</mat-option>
+                            <mat-option value="M">Male</mat-option>
+                            <mat-option value="F">Female</mat-option>
+                            <mat-option value="N">Non-Binary</mat-option>
+                        </mat-select>
+                        <span *ngIf="registerForm.controls.Gender.hasError('required')">
+                            <!-- Select Gender. -->
+                        </span>
+                    </mat-form-field>
+                    <br>
+                
+
+                    <mat-form-field>
+                        <!-- <label>Address</label> -->
+                        <mat-label> Enter your Address</mat-label>
+                        <input matInput placeholder="sector 4,london"  formControlName="Address">
+                        <span *ngIf="registerForm.controls.Address.hasError('required')">
+                            <!-- Enter your Address. -->
+                        </span>
+                    </mat-form-field>
+            
+                    <mat-form-field>
+                        <!-- <label>District</label> -->
+                        
+
+                        <mat-label>select District</mat-label>
+                        <input matInput placeholder="Thane"  formControlName="District" >
+                        <span *ngIf="registerForm.controls.District.hasError('required')">
+                            <!-- Enter your District. -->
+                        </span>
+                    </mat-form-field>
+        
+                    <br>
+                    
+
+                    <mat-form-field>
+                        <!-- <label>country</label> -->
+                        <mat-label>Select country</mat-label>
+                        <!-- <input matInput formControlName="Country"/>
+                        <span *ngIf="registerForm.controls.Country.hasError('required')">
+                        </span> -->
+                        <mat-select [formGroup]="registerForm" formControlName="Country"  (selectionChange)="stateDetails()">
+                            @for (country of countries; track countries) {
+                            <mat-option [value]="country.Id">{{country.Name}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>     
+
+                    <mat-form-field>
+                        <!-- <label>State</label> -->
+                        <mat-label>Select state</mat-label>
+                        <!-- <input matInput formControlName="State"/>
+                        <span *ngIf="registerForm.controls.State.hasError('required')">
+                        </span> -->
+                        <mat-select  [formGroup]="registerForm" formControlName="State" >
+                            @for (state of states; track states) {
+                            <mat-option [value]="state.Id">{{state.Name}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+    
+                           
+
+                    <mat-form-field>
+                        <!-- <label>Pincode</label> -->
+                        <mat-label> Enter your Pincode</mat-label>
+                        <input matInput placeholder="000000"  formControlName="Pincode">
+                        <span *ngIf="registerForm.controls.Pincode.hasError('required')">
+                            <!-- Enter your Pincode. -->
+                        </span>
+                    </mat-form-field>
+        
+                    <mat-form-field>
+                        <!-- <label>MobileNo</label> -->
+                        <mat-label> Enter your MobileNo</mat-label>
+                        <input matInput placeholder="123456789"  formControlName="MobileNo">
+                        <span *ngIf="registerForm.controls.MobileNo.hasError('required')">
+                            <!-- Enter your MobileNo. -->
+                        </span>
+                    </mat-form-field>
+        
+                    <br>
+                    <mat-form-field>
+                        <!-- <label>EmailID</label> -->
+                        <mat-label>Enter your EmailID</mat-label>
+                        <input matInput formControlName="EmailId"/>
+                        <span *ngIf="registerForm.controls.EmailId.hasError('required')">
+                            <!-- Enter your Email. -->
+                        </span>
+                    </mat-form-field>
+                     
+                    <!-- <button type="submit">submit</button> -->
+                    <button type="submit" [disabled]="registerForm.invalid" mat-raised-button color="primary">Submit</button>
+                    
+                </div>
+            
+            </form>
+        </div>
+
+    </div>
+
+    <!-- <button [swal]="['Oops!', 'This is not implemented yet :/', 'warning']">
+        Do it!
+      </button> -->
